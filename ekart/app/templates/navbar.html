@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <title>EKart!!</title>
+        {% load static %}
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+        <style>
+           #bg{
+        background-repeat: no-repeat;
+        background-size:1800px 900px ;
+        background-position: top;
+        background-attachment: fixed;
+    }
+        </style>
+        </head>
+  <body id="bg" style="background-image:url('{%static 'bg.jpg'%}');">
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+      <i class="navbar-brand  bi bi-cart-fill "style="font-size:24px;color:pink">EKart</i> 
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#cnav">
+        <span class="navbar-toggler-icon "></span>
+      </button>
+      <div class="collapse navbar-collapse" id="cnav">
+      <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'collections' %}" >Collections</a></li>  
+          <li class="nav-item"><a class="nav-link" href="{% url 'cart'%}"><i class="bi bi-cart"> Cart</i></a></li>
+            
+          <form class="d-flex">
+            {% if user.is_authenticated %}
+            <li class="nav-item"><a  class="nav-link bi bi-person-fill" href="#"> {{user.username}}</a></li>
+            <li class="nav-item"><a  class="nav-link " href="{% url 'logout' %}">Logout</a></li>
+            {% else %} 
+            <li class="nav-item"><a class="nav-link bi bi-person" href="login">Login</a></li>
+          {% endif %}
+          </form> 
+      </ul>
+      </div>
+    </nav><br>
+    {% block content %}
+    {% endblock content %}
+    <footer class="text-center bg-dark text-white" style="padding: 7px;">
+      <section class="container  justify-content-center">
+          <div class="container text-center mt-5">
+            <span style="color: aqua;">Get Connected with us on social media:</span><br>
+              <a href="" class="me-4 text-reset"><i class="bi bi-facebook"></i></a>
+              <a href="" class="me-4 text-reset"><i class="bi bi-twitter"></i></a>
+              <a href="" class="me-4 text-reset"><i class="bi bi-instagram"></i></a>
+              <a href="" class="me-4 text-reset"><i class="bi bi-google"></i></a><br><br>
+                      <p>Ekart is a one stop destination for your toys shoppings. We
+                          give you the opportunity to give your child a best toys from our brands.
+                      </p>
+          </div>
+          <div class="text-center">
+              <h5 class="text-uppercase" style="color: aqua;">Contact</h5>
+              <i class="bi bi-envelope-fill"> ekartadmin@ekart.in</i><br>
+              <i class="bi bi-telephone-fill"> +91 9876543210</i>
+          </div>
+      </section>
+  </footer>
+    </body>
+    </html>

@@ -1,0 +1,38 @@
+<html>
+    <head>
+        {%extends 'navbar.html'%}
+        {%block content %}
+        <style>
+            
+            form{
+                text-align: center;
+                
+                color:black;
+                
+            }
+            .kk{
+                margin-top: 80px; 
+                background-color: rgb(134, 136, 132);
+                width: 30%;
+                height: 45%;
+                opacity:80%;
+            }
+        </style>
+    </head>
+<body>
+
+<form action="" method="POST">
+    
+    {% csrf_token %}
+    <div class="container kk"><br>
+        <h2>Users Login</h2><br><br>
+    {% for field in form %}
+        <p>{{field.label}}:<br>{{field}}</p>
+    {% endfor %}
+    <button type="submit">Login</button>
+    <p>Don't have an account? <a href="{% url 'register' %}"><b>Signup here</b></a></p>
+    <br>
+    </form>
+</div>
+<br><br><br><br><br><br><br>
+{%endblock content %}
